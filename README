@@ -1,0 +1,73 @@
+Chatbot Full-Stack em Python com LangGraph
+CI Testes de integração Abrir em - LangGraph Studio
+
+Este modelo demonstra como construir uma aplicação chatbot completa usando os recursos de configuração HTTP do LangGraph. Ele mostra como combinar um agente no estilo React com uma interface web moderna, tudo hospedado em uma única implantação do LangGraph.
+
+Principais características
+🌐 Implantação Única - Hospede seu agente e interface do usuário em uma única implantação do LangGraph.
+🎨 Interface de usuário moderna - Interface de bate-papo elegante criada com FastHTML
+🔄 Agente no estilo React - Chatbot inteligente usando o padrão de agente React do LangGraph
+🛠️ Configuração fácil - Configuração simples de roteamento HTTP através delanggraph.json
+⚡ Desenvolvimento Rápido - Prototipagem ágil com os componentes do lado do servidor do FastHTML
+Como funciona
+Configuração HTTP
+A mágica acontece em langgraph.json, onde configuramos tanto o agente quanto as rotas HTTP:
+
+{
+  "dependencies": ["."],
+  "graphs": {
+    "agent": "./src/react_agent/graph.py:graph"
+  },
+  "http": {
+    "app": "./src/react_agent/app.py:app"
+  }
+}
+Esta configuração:
+
+Define o grafo de agentes emgraph.py
+Configura rotas HTTP através do FastHTML emapp.py
+Interface de usuário FastHTML
+A interface do usuário foi construída usando FastHTML, um framework de componentes leve para o lado do servidor. Principais recursos:
+
+Interface de chat moderna usando componentes DaisyUI
+atualizações de mensagens em tempo real
+Design limpo e responsivo
+Agente LangGraph
+O chatbot utiliza o padrão de agente React da LangGraph, que:
+
+Processa mensagens através de um modelo Claude 3
+Mantém o estado de conversa
+Pode ser facilmente expandido com ferramentas personalizadas.
+Começando
+Instale as dependências:
+
+pip install uv
+uv sync --dev 
+Em seguida, execute o servidor local:
+
+uv run langgraph dev --no-browser
+Visite http://localhost:2024para interagir com seu chatbot!
+
+Personalização
+Modificar o agente
+Editar src/react_agent/graph.pypara:
+
+Alterar o prompt do sistema
+Adicionar ferramentas personalizadas
+Modificar o comportamento do agente
+Personalize a interface do usuário
+Editar src/react_agent/app.pypara:
+
+Atualize a interface de bate-papo
+Adicionar novos componentes
+Modificar estilo
+Próximos passos
+Adicionar armazenamento persistente para o histórico do chat.
+Implemente ferramentas personalizadas para seu agente.
+Aprimore a interface do usuário com recursos adicionais.
+Implante em produção usando a plataforma LangGraph.
+Para mais exemplos e documentação detalhada:
+
+Documentação do LangGraph
+Documentação FastHTML
+Componentes DaisyUI
